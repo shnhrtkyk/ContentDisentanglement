@@ -131,7 +131,12 @@ def preprocess_celeba(args):
 def preprocess_folders(args):
     if not os.path.exists(args.dest):
         os.mkdir(args.dest)
-
+    
+    trainA_path = os.path.join(args.root, 'trainA')
+    trainB_path = os.path.join(args.root, 'trainB')
+    testA_path = os.path.join(args.root, 'testA')
+    testB_path = os.path.join(args.root, 'testB')
+    
     trainA = os.listdir(os.path.join(args.root, 'trainA'))
     trainB = os.listdir(os.path.join(args.root, 'trainB'))
     testA = os.listdir(os.path.join(args.root, 'testA'))
@@ -140,30 +145,30 @@ def preprocess_folders(args):
     with open(os.path.join(args.dest, 'testA.txt'), 'w') as f:
         for i, _img in enumerate(testA):
             if i == len(testA) - 1:
-                f.write("%s" % os.path.join(args.root, _img))
+                f.write("%s" % os.path.join(testA_path, _img))
             else:
-                f.write("%s\n" % os.path.join(args.root, _img))
+                f.write("%s\n" % os.path.join(testA_path, _img))
 
     with open(os.path.join(args.dest, 'testB.txt'), 'w') as f:
         for i, _img in enumerate(testB):
             if i == len(testB) - 1:
-                f.write("%s" % os.path.join(args.root, _img))
+                f.write("%s" % os.path.join(testB_path, _img))
             else:
-                f.write("%s\n" % os.path.join(args.root, _img))
+                f.write("%s\n" % os.path.join(testB_path, _img))
 
     with open(os.path.join(args.dest, 'trainA.txt'), 'w') as f:
         for i, _img in enumerate(trainA):
             if i == len(trainA) - 1:
-                f.write("%s" % os.path.join(args.root, _img))
+                f.write("%s" % os.path.join(trainA_path, _img))
             else:
-                f.write("%s\n" % os.path.join(args.root, _img))
+                f.write("%s\n" % os.path.join(trainA_path, _img))
 
     with open(os.path.join(args.dest, 'trainB.txt'), 'w') as f:
         for i, _img in enumerate(trainB):
             if i == len(trainB) - 1:
-                f.write("%s" % os.path.join(args.root, _img))
+                f.write("%s" % os.path.join(trainB_path, _img))
             else:
-                f.write("%s\n" % os.path.join(args.root, _img))
+                f.write("%s\n" % os.path.join(trainB_path, _img))
 
 
 if __name__ == "__main__":
